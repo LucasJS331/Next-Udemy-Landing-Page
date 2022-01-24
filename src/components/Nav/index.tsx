@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
-import { NavLink } from '../navLink';
-import propType from 'prop-types';
+import { NavLink } from '../NavLink';
 
 export const NavMenu = styled.nav`
   ${({ theme }) => css`
@@ -12,21 +11,19 @@ export const NavMenu = styled.nav`
   `}
 `;
 
-export const Nav = ({ links = [] }) => {
+export const Nav = ({ links = [] }: NavTypes) => {
   return (
     <NavMenu>
       {links.map((link) => {
-        return <NavLink key={link.text} {...link} />;
+        return <NavLink key={link.text} text={link.text} url={link.url} />;
       })}
     </NavMenu>
   );
 };
-
-Nav.propTypes = {
-  links: propType.arrayOf(
-    propType.shape({
-      text: propType.string.isRequired,
-      link: propType.string,
-    }),
-  ),
+export type link = {
+  text: string;
+  url: string;
+};
+export type NavTypes = {
+  links: link[];
 };

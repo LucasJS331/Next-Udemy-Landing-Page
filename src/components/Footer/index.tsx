@@ -1,16 +1,15 @@
 import styled, { css } from 'styled-components';
-import { TextComponent } from '../textComponent';
-import P from 'prop-types';
+import { TextComponent } from '../TextComponent';
 
 export const Container = styled.section`
-  ${({ theme }) => css`
+  ${() => css`
     padding: 1rem;
     text-align: center;
     margin-bottom: 1rem;
   `}
 `;
 
-export const Footer = ({ text, background = false, href = '/' }) => {
+export const Footer = ({ text, href = '/' }: FooterTypes) => {
   return (
     <Container id="Footer">
       <TextComponent>
@@ -20,8 +19,8 @@ export const Footer = ({ text, background = false, href = '/' }) => {
   );
 };
 
-Footer.propTypes = {
-  text: P.string.isRequired,
-  background: P.bool,
-  href: P.string,
+type FooterTypes = {
+  text: string;
+  background?: boolean;
+  href?: string;
 };

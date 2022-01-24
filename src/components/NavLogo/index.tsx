@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import P from 'prop-types';
 
 export const ContainerLogo = styled.a`
   ${({ theme }) => css`
@@ -19,7 +18,7 @@ export const ContainerLogo = styled.a`
   `}
 `;
 
-export const NavLogo = ({ text, srcImg = '' }) => {
+export const NavLogo = ({ text, srcImg }: NavLogoTypes) => {
   return (
     <ContainerLogo href="#">
       {srcImg.src.trim() !== '' && <img src={srcImg.src} alt={text} />}
@@ -28,8 +27,10 @@ export const NavLogo = ({ text, srcImg = '' }) => {
     </ContainerLogo>
   );
 };
-
-NavLogo.propTypes = {
-  text: P.string.isRequired,
-  srcImg: P.object.isRequired,
+type img = {
+  src: string;
+};
+export type NavLogoTypes = {
+  text: string;
+  srcImg: img;
 };

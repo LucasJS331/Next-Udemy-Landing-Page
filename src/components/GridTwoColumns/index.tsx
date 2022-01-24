@@ -1,10 +1,17 @@
 import styled, { css } from 'styled-components';
 import { SectionBackground } from '../SectionBackground';
-import { Heading, MainTitle } from '../heading';
-import { TextComponent } from '../textComponent';
-import P from 'prop-types';
+import { Heading, MainTitle } from '../Heading';
+import { TextComponent } from '../TextComponent';
 
-const Container = styled.div`
+type ContainerTypes = {
+  background: boolean;
+};
+
+type ImgContainerTypes = {
+  shadow: boolean;
+  bottom: boolean;
+};
+const Container = styled.div<ContainerTypes>`
   ${({ theme, background }) => css`
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -34,7 +41,7 @@ const Container = styled.div`
 
 const TextContainer = styled.div``;
 
-const ImgContainer = styled.div`
+const ImgContainer = styled.div<ImgContainerTypes>`
   img {
     width: 100%;
     max-height: 500px;
@@ -75,12 +82,12 @@ export const GridTwoColumns = ({
   shadow = false,
   bottom = false,
   nameID,
-}) => {
+}: GridTwoColumnsTypes) => {
   return (
     <SectionBackground background={background} nameID={nameID}>
       <Container background={background}>
         <TextContainer>
-          <Heading title={title} size="xlarge" />
+          <Heading title={title} size="xlarge" as="h2" />
           <TextComponent size={'medium'}>{text}</TextComponent>
         </TextContainer>
         <ImgContainer shadow={shadow} bottom={bottom}>
@@ -91,12 +98,12 @@ export const GridTwoColumns = ({
   );
 };
 
-GridTwoColumns.propTypes = {
-  text: P.string.isRequired,
-  background: P.bool,
-  title: P.string.isRequired,
-  srcImg: P.string.isRequired,
-  shadow: P.bool,
-  bottom: P.bool,
-  nameID: P.string.isRequired,
+type GridTwoColumnsTypes = {
+  text: string;
+  background?: boolean;
+  title: string;
+  srcImg: string;
+  shadow?: boolean;
+  bottom?: boolean;
+  nameID: string;
 };

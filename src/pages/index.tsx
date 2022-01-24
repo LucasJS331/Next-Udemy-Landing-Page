@@ -4,12 +4,19 @@ import { GridContent } from '../components/GridContent/index';
 import { GridText } from '../components/GridText/index';
 import { baseData } from '../data/initialData';
 import img from '../img/feliz.jpg';
-import P from 'prop-types';
 import gif from '../img/udemy.gif';
 import Head from 'next/head';
-
+import { GetStaticProps } from 'next';
 import axios from 'axios';
-export default function Home({ posts }) {
+
+export type post = {
+  title: string;
+  body: string;
+};
+export type HomeTypes = {
+  posts: post[];
+};
+export default function Home({ posts }: HomeTypes) {
   return (
     <>
       <Head>
@@ -18,24 +25,24 @@ export default function Home({ posts }) {
       </Head>
       <BaseTemplate {...baseData}>
         <GridTwoColumns
-          title={'Start or carreer here'}
-          text={posts[0].body}
+          title={'Start your Carreer'}
+          text={posts[1].body}
           srcImg={img.src}
           background={false}
           bottom={true}
           nameID="Start"
         />
         <GridTwoColumns
-          title={posts[1].title}
-          text={posts[1].body}
+          title={posts[2].title}
+          text={posts[2].body}
           srcImg={gif.src}
           shadow={true}
           nameID="View"
         />
 
         <GridContent
-          title={posts[2].title}
-          text={posts[2].body}
+          title={posts[3].title}
+          text={posts[3].body}
           nameID="About"
         />
         <GridText
@@ -50,11 +57,7 @@ export default function Home({ posts }) {
   );
 }
 
-Home.propTypes = {
-  posts: P.array,
-};
-
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps<HomeTypes> = async () => {
   const posts = (await axios.get('https://jsonplaceholder.typicode.com/posts'))
     .data;
 
@@ -64,3 +67,5 @@ export const getStaticProps = async () => {
     },
   };
 };
+
+//todoo: faltou tipar os components de menu

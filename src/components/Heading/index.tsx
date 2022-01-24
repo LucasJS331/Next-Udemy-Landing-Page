@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import P from 'prop-types';
 const sizes = {
   small: (theme) => theme.sizes.small,
   medium: (theme) => theme.sizes.medium,
@@ -7,7 +6,12 @@ const sizes = {
   extra: (theme) => theme.sizes.extra,
   xlarge: (theme) => theme.sizes.xlarge,
 };
-export const MainTitle = styled.h1`
+type MainTitleTypes = {
+  as: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  background: boolean;
+  size: 'small' | 'medium' | 'big' | 'extra' | 'xlarge';
+};
+export const MainTitle = styled.h1<MainTitleTypes>`
   color: ${({ theme, background }) =>
     background ? theme.colors.light_color : theme.colors.dark_color};
   font-size: ${({ size, theme }) => sizes[size](theme)};
@@ -23,7 +27,7 @@ export const Heading = ({
   background = false,
   as = 'h2',
   size = 'medium',
-}) => {
+}: HeadingTypes) => {
   return (
     <MainTitle background={background} as={as} size={size}>
       {title}
@@ -31,9 +35,9 @@ export const Heading = ({
   );
 };
 
-Heading.propTypes = {
-  title: P.node.isRequired,
-  as: P.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
-  size: P.oneOf(['small', 'medium', 'big', 'xlarge', 'extra']),
-  background: P.bool,
+type HeadingTypes = {
+  title: string;
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  size: 'small' | 'medium' | 'big' | 'xlarge' | 'extra';
+  background?: boolean;
 };

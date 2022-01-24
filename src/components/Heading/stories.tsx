@@ -1,4 +1,6 @@
-import { Heading } from '.';
+/* eslint-disable */
+
+import { Heading } from ".";
 
 export default {
   title: 'Heading',

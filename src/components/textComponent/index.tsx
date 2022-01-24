@@ -1,11 +1,14 @@
-import propTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 const sizes = {
   small: (theme) => theme.sizes.small,
   medium: (theme) => theme.sizes.medium,
   big: (theme) => theme.sizes.big,
 };
-export const Text = styled.p`
+
+type TextType = {
+  size: 'small' | 'medium' | 'big';
+};
+export const Text = styled.p<TextType>`
   font-size: ${({ size, theme }) => sizes[size](theme)};
 
   ${({ theme }) => css`
@@ -16,11 +19,14 @@ export const Text = styled.p`
   `}
 `;
 
-export const TextComponent = ({ children, size = 'medium' }) => {
+export const TextComponent = ({
+  children,
+  size = 'medium',
+}: TextComponentTypes) => {
   return <Text size={size}>{children}</Text>;
 };
 
-TextComponent.propTypes = {
-  children: propTypes.node,
-  size: propTypes.string,
+type TextComponentTypes = {
+  children: React.ReactNode;
+  size?: 'small' | 'medium' | 'big';
 };

@@ -29,7 +29,7 @@ export const GlobalStyle = createGlobalStyle`
     }
     button{
         ${({ theme }) => css`
-          background-color: ${theme.colors.mainBg};
+          background-color: ${theme.colors.primary_color};
           color: white;
         `}
     }

@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
-import { Heading, MainTitle } from '../heading';
+import { post } from '../../pages';
+import { Heading, MainTitle } from '../Heading';
 import { SectionBackground } from '../SectionBackground';
-import { TextComponent } from '../textComponent';
-import P from 'prop-types';
+import { TextComponent } from '../TextComponent';
 
 const Container = styled.section`
   ${({ theme }) => css`
@@ -16,7 +16,7 @@ const Container = styled.section`
   `}
 `;
 const Grid = styled.div`
-  ${({ theme }) => css`
+  ${() => css`
     /* coloque seu css aqui */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -34,10 +34,10 @@ export const GridText = ({
   gridContent = [],
   title,
   nameID,
-}) => {
+}: GridTextTypes) => {
   return (
     <SectionBackground background={background} nameID={nameID}>
-      <Container background={background} className="Grid-txt">
+      <Container className="Grid-txt">
         <Heading title={title} size="extra" background={background} />
         <TextComponent>{description}</TextComponent>
         <Grid>
@@ -49,9 +49,7 @@ export const GridText = ({
                   size="medium"
                   background={background}
                 />
-                <TextComponent>
-                  {element.text ? element.text : element.body}
-                </TextComponent>
+                <TextComponent>{element.body}</TextComponent>
               </Article>
             );
           })}
@@ -61,10 +59,10 @@ export const GridText = ({
   );
 };
 
-GridText.propTypes = {
-  description: P.string.isRequired,
-  background: P.bool,
-  title: P.string.isRequired,
-  gridContent: P.array,
-  nameID: P.string.isRequired,
+export type GridTextTypes = {
+  description: string;
+  background: boolean;
+  title: string;
+  gridContent: post[];
+  nameID?: string;
 };

@@ -2,10 +2,10 @@ import styled, { css } from 'styled-components';
 import { Footer } from '../../components/Footer/index';
 import { GoTopBtn } from '../../components/GoTopBtn';
 import { Menu } from '../../components/Menu/index';
-import P from 'prop-types';
-
+import { link } from '../../components/Nav/index';
+import { NavLogoTypes } from '../../components/NavLogo';
 export const Container = styled.div`
-  ${({ theme }) => css``}
+  ${() => css``}
 `;
 
 export const BaseTemplate = ({
@@ -14,7 +14,7 @@ export const BaseTemplate = ({
   children,
   footerTxt,
   footerHref,
-}) => {
+}: BaseTemplatTypes) => {
   return (
     <>
       <Menu links={links} logoData={logoData} />
@@ -25,10 +25,10 @@ export const BaseTemplate = ({
   );
 };
 
-BaseTemplate.propTypes = {
-  footerTxt: P.string.isRequired,
-  links: P.array,
-  footerHref: P.string.isRequired,
-  logoData: P.object,
-  children: P.node,
+type BaseTemplatTypes = {
+  footerTxt: string;
+  links?: link[];
+  footerHref: string;
+  logoData?: NavLogoTypes;
+  children: React.ReactNode;
 };

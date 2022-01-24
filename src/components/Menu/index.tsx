@@ -2,13 +2,17 @@ import styled, { css } from 'styled-components';
 import { Nav } from '../Nav';
 import { NavLogo } from '../NavLogo';
 import { SectionContainer } from '../SectionContainer';
-import P from 'prop-types';
 import { ContainerLogo } from '../NavLogo/index';
 import { Menu as MenuBtn } from '@styled-icons/material-outlined/Menu';
 import { Close as CloseIcon } from '@styled-icons/material-outlined/Close';
 import { useState } from 'react';
+import { NavLogoTypes } from '../NavLogo/index';
+import { link } from '../Nav/index';
 
-const Container = styled.div`
+type ContainerType = {
+  visible: boolean;
+};
+const Container = styled.div<ContainerType>`
   ${({ theme, visible }) => css`
     width: 100%;
     max-height: 100vh;
@@ -89,7 +93,7 @@ const Button = styled.button`
   `}
 `;
 
-export const Menu = ({ links, logoData }) => {
+export const Menu = ({ links, logoData }: MenuTypes) => {
   const [visible, setVisible] = useState(false);
   const [isOpen, setIsClosed] = useState(true);
 
@@ -114,7 +118,7 @@ export const Menu = ({ links, logoData }) => {
   );
 };
 
-Menu.propTypes = {
-  logoData: P.shape(NavLogo.propTypes).isRequired,
-  ...Nav.propTypes,
+type MenuTypes = {
+  logoData: NavLogoTypes;
+  links: link[];
 };

@@ -1,10 +1,12 @@
 import styled, { css } from 'styled-components';
-import { Heading, MainTitle } from '../heading';
+import { Heading, MainTitle } from '../Heading';
 import { SectionBackground } from '../SectionBackground/index';
-import { TextComponent } from '../textComponent';
-import P from 'prop-types';
+import { TextComponent } from '../TextComponent';
 
-const Container = styled.div`
+export type ContainerTypes = {
+  background: boolean;
+};
+const Container = styled.div<ContainerTypes>`
   ${({ theme, background }) => css`
     display: grid;
     grid-template-columns: 1fr;
@@ -35,7 +37,7 @@ export const GridContent = ({
   background = false,
   size = 'xlarge',
   nameID,
-}) => {
+}: GridContentType) => {
   return (
     <SectionBackground background={background} nameID={nameID}>
       <Container background={background}>
@@ -46,10 +48,10 @@ export const GridContent = ({
   );
 };
 
-GridContent.propTypes = {
-  text: P.string.isRequired,
-  background: P.bool,
-  title: P.string.isRequired,
-  size: P.oneOf(['small', 'medium', 'big', 'xlarge', 'extra']),
-  nameID: P.string.isRequired,
+export type GridContentType = {
+  text: string;
+  background?: boolean;
+  title: string;
+  size?: 'small' | 'medium' | 'big' | 'xlarge' | 'extra';
+  nameID: string;
 };

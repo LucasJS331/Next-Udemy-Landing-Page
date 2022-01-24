@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import P from 'prop-types';
 
 export const Link = styled.a`
   ${({ theme }) => css`
@@ -29,16 +28,11 @@ export const Link = styled.a`
   `}
 `;
 
-export const NavLink = ({ text, target, url }) => {
-  return (
-    <Link href={url} target={target}>
-      {text}
-    </Link>
-  );
+export const NavLink = ({ text, url }: NavLinkTypes) => {
+  return <Link href={url}>{text}</Link>;
 };
 
-NavLink.propTypes = {
-  text: P.string.isRequired,
-  target: P.string,
-  url: P.string.isRequired,
+export type NavLinkTypes = {
+  text: string;
+  url: string;
 };

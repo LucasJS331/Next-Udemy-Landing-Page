@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components';
 import { SectionContainer } from '../SectionContainer';
-import bg from '../../img/main-bg.svg';
-import P from 'prop-types';
 
-export const Container = styled.div`
+type ContainerType = {
+  background: boolean;
+};
+export const Container = styled.div<ContainerType>`
   ${({ theme, background }) => css`
     min-height: 100vh;
     display: flex;
@@ -28,7 +29,11 @@ export const Container = styled.div`
   `}
 `;
 
-export const SectionBackground = ({ children, background = true, nameID }) => {
+export const SectionBackground = ({
+  children,
+  background = true,
+  nameID,
+}: SectionBackgroundTypes) => {
   return (
     <Container background={background} id={nameID}>
       <SectionContainer>{children}</SectionContainer>
@@ -36,8 +41,8 @@ export const SectionBackground = ({ children, background = true, nameID }) => {
   );
 };
 
-SectionBackground.propTypes = {
-  children: P.node.isRequired,
-  background: P.bool,
-  nameID: P.string.isRequired,
+type SectionBackgroundTypes = {
+  children: React.ReactNode;
+  background: boolean;
+  nameID: string;
 };

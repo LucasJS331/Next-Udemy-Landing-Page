@@ -8,18 +8,18 @@ export default {
     args: {
         children: (
             <div>
-                <h1>Oiiiiiii</h1>
-                <p>Hello,Dolly!</p>
+                <h1>Hello </h1>
+                <p>'Hello,Dolly!'</p>
             </div>
         ),
-        
-        
+
+
     },
     argTypes:{
-     
+
     },
-   
-   
+
+
 }
 
 

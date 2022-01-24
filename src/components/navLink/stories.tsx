@@ -1,7 +1,6 @@
 /* eslint-disable */
 
 import { NavLink } from ".";
-
 export default {
     title: 'navLink',
     component: NavLink,
@@ -9,16 +8,16 @@ export default {
         text: 'default text',
         url: 'www.google.com',
         target: '_blank'
-        
-        
+
+
     },
     argTypes:{
         text: {type: "string"},
         url: {type: 'string'},
         target: {type: 'string'}
     },
-  
-   
+
+
 }
 
 
