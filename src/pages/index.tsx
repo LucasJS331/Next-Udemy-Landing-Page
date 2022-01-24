@@ -67,5 +67,3 @@ export const getStaticProps: GetStaticProps<HomeTypes> = async () => {
     },
   };
 };
-
-//todoo: faltou tipar os components de menu

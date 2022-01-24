@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styled, { css } from 'styled-components';
 
 export const ContainerLogo = styled.a`
@@ -21,7 +22,7 @@ export const ContainerLogo = styled.a`
 export const NavLogo = ({ text, srcImg }: NavLogoTypes) => {
   return (
     <ContainerLogo href="#">
-      {srcImg.src.trim() !== '' && <img src={srcImg.src} alt={text} />}
+      {srcImg.src.trim() !== '' && <Image src={srcImg.src} alt={text} />}
 
       {srcImg.src.trim() === '' && <span>{text}</span>}
     </ContainerLogo>
