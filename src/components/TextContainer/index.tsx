@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { TextComponentTypes } from './type';
 const sizes = {
   small: (theme) => theme.sizes.small,
   medium: (theme) => theme.sizes.medium,
@@ -24,9 +25,4 @@ export const TextComponent = ({
   size = 'medium',
 }: TextComponentTypes) => {
   return <Text size={size}>{children}</Text>;
-};
-
-type TextComponentTypes = {
-  children: React.ReactNode;
-  size?: 'small' | 'medium' | 'big';
 };

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { SectionBackground } from '../SectionBackground';
 import { Heading, MainTitle } from '../Heading';
-import { TextComponent } from '../TextComponent';
+import { TextComponent } from '../TextContainer';
 
 type ContainerTypes = {
   background: boolean;

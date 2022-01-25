@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { NavLink } from '../NavLink';
+import { NavLink } from '../LinkComponent';
 
 export const NavMenu = styled.nav`
   ${({ theme }) => css`

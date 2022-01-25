@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { TextComponent } from '../TextComponent';
+import { TextComponent } from '../TextContainer';
 
 export const Container = styled.section`
   ${() => css`

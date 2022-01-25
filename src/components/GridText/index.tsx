@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { post } from '../../pages';
 import { Heading, MainTitle } from '../Heading';
 import { SectionBackground } from '../SectionBackground';
-import { TextComponent } from '../TextComponent';
+import { TextComponent } from '../TextContainer';
 
 const Container = styled.section`
   ${({ theme }) => css`
