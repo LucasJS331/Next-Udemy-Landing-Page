@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 import { SectionBackground } from '../SectionBackground';
 import { Heading, MainTitle } from '../Heading';
 import { TextComponent } from '../TextComponent';
-import Image from 'next/image';
 
 type ContainerTypes = {
   background: boolean;
@@ -92,7 +91,7 @@ export const GridTwoColumns = ({
           <TextComponent size={'medium'}>{text}</TextComponent>
         </TextContainer>
         <ImgContainer shadow={shadow} bottom={bottom}>
-          <Image src={srcImg} alt={title} />
+          <img src={srcImg} alt={title} />
         </ImgContainer>
       </Container>
     </SectionBackground>
